@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/context
+                 http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--目标对象-->
+    <bean id="chick" class="foo.Chick" lazy-init="true">
+        <property name="egg" ref="egg"/>
+    </bean>
+    <bean id="egg" class="foo.Egg" lazy-init="true">
+        <property name="chick" ref="chick"/>
+    </bean>
+
+    <!--切面-->
+    <bean id="performenceAspect" class="foo.PerformenceAspect"/>
+
+    <!--配置切入点-->
+    <aop:config>
+        <aop:pointcut id="mypointcut" expression="execution(public * foo.Egg.*(..))"/>
+        <aop:aspect id="myAspect" ref="performenceAspect">
+            <!--注掉下面这行，测试不生成目标对象的代理的情况-->
+            <aop:after method="afterIncubate" pointcut-ref="mypointcut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

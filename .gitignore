@@ -1,0 +1,17 @@
+.gradle
+*.sw?
+.#*
+*#
+/build
+.classpath
+.project
+.settings
+bin
+build
+target
+.idea
+*.iml
+spring-bootstrap/target
+**/target
+!/springaop/src/main/java/org/springframework/aop/target
+

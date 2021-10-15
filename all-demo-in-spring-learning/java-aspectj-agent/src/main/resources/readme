@@ -1,0 +1,11 @@
+参考了：
+https://www.eclipse.org/aspectj/doc/released/devguide/ltw-configuration.html
+
+执行步骤：
+1.mvn clean package，得到jar包：java-aspectj-agent-1.0-SNAPSHOT
+
+2.把aspectjweaver-1.8.2.jar拷贝到和本jar包同路径下
+
+3.cmd下执行：
+java -javaagent:aspectjweaver-1.8.2.jar -cp java-aspectj-agent-1.0-SNAPSHOT.jar foo.Main
+

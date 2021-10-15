@@ -1,0 +1,3 @@
+本module的功能是，在我们spring boot应用打包成fat jar或者war包后，
+通过本工程中的代码来进行启动。
+idea中调试暂时用不到这个，在parent中先注释掉。

@@ -1,0 +1,16 @@
+参考了：
+https://www.cnblogs.com/yelao/p/9841810.html
+
+执行步骤：
+1.mvn clean package，得到jar包：java-instrumentation-agent-1.0-SNAPSHOT.jar
+
+2.因为没有和文章里完全一致，所以我这个例子的话，修改MANIFEST.MF时，添加如下两行：
+Class-Path: javassist-3.26.0-GA.jar
+Premain-Class: foo.Premain
+
+3.把javassist-3.26.0-GA.jar找到，拷贝到和本jar包同一路径
+4.执行：
+java -javaagent:java-instrumentation-agent-1.0-
+SNAPSHOT.jar -cp java-instrumentation-agent-1.0-SNAPSHOT.jar TestMainInJar
+
+其实按理说，agent jar包和业务jar包要分开。这里是简单起见，所以全放一块了。

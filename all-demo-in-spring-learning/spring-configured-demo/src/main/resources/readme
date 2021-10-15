@@ -1,0 +1,7 @@
+运行时，需要指定vm参数(jar包路径改成自己的)：
+
+-javaagent:E:\repo\org\springframework\spring-instrument\4.3.7.RELEASE\spring-instrument-4.3.7.RELEASE.jar
+
+相关文档，直接参考：
+https://blog.csdn.net/weixin_34099526/article/details/92531313
+https://docs.spring.io/spring/docs/5.1.13.RELEASE/spring-framework-reference/core.html#aop-atconfigurable
